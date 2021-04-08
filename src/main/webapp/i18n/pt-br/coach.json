@@ -1,0 +1,26 @@
+{
+  "unblockItApp": {
+    "coach": {
+      "home": {
+        "title": "Coaches",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Coach",
+        "createOrEditLabel": "Criar ou editar Coach",
+        "notFound": "Nenhum Coach encontrado"
+      },
+      "created": "Um novo Coach foi criado com o identificador {{ param }}",
+      "updated": "Um Coach foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Coach foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Coach {{ id }}?"
+      },
+      "detail": {
+        "title": "Coach"
+      },
+      "id": "ID",
+      "nome": "Nome",
+      "agenda": "Agenda",
+      "tarefa": "Tarefa"
+    }
+  }
+}

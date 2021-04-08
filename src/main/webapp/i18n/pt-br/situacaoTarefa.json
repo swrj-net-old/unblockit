@@ -1,0 +1,10 @@
+{
+  "unblockItApp": {
+    "SituacaoTarefa": {
+      "null": "",
+      "PENDENTE": "PENDENTE",
+      "REALIZADA": "REALIZADA",
+      "AGUARDANDO": "AGUARDANDO"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity Tarefa.
+    -->
+    <changeSet id="20210408231854-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="coach_tarefa_id"
+                                 baseTableName="tarefa"
+                                 constraintName="fk_tarefa__coach_tarefa_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="coach"/>
+
+        <addForeignKeyConstraint baseColumnNames="squad_tarefa_id"
+                                 baseTableName="tarefa"
+                                 constraintName="fk_tarefa__squad_tarefa_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="squad"/>
+    </changeSet>
+</databaseChangeLog>

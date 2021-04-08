@@ -1,0 +1,12 @@
+{
+  "unblockItApp": {
+    "SituacaoAgenda": {
+      "null": "",
+      "RESERVADA": "RESERVADA",
+      "CONFIRMADA": "CONFIRMADA",
+      "REALIZADA": "REALIZADA",
+      "CANCELADA_SQUAD": "CANCELADA_SQUAD",
+      "CANCELADA_UNBLOC": "CANCELADA_UNBLOC"
+    }
+  }
+}

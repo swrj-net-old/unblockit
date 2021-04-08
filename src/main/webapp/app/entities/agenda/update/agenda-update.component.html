@@ -1,0 +1,157 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-agenda-heading" data-cy="AgendaCreateUpdateHeading" jhiTranslate="unblockItApp.agenda.home.createOrEditLabel">
+        Create or edit a Agenda
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.agenda.nome" for="field_nome">Nome</label>
+          <input type="text" class="form-control" name="nome" id="field_nome" data-cy="nome" formControlName="nome" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.agenda.dataAgenda" for="field_dataAgenda">Data Agenda</label>
+          <div class="input-group">
+            <input
+              id="field_dataAgenda"
+              data-cy="dataAgenda"
+              type="text"
+              class="form-control"
+              name="dataAgenda"
+              ngbDatepicker
+              #dataAgendaDp="ngbDatepicker"
+              formControlName="dataAgenda"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dataAgendaDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.agenda.horaInicio" for="field_horaInicio">Hora Inicio</label>
+          <input
+            type="text"
+            class="form-control"
+            name="horaInicio"
+            id="field_horaInicio"
+            data-cy="horaInicio"
+            formControlName="horaInicio"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.agenda.horaFim" for="field_horaFim">Hora Fim</label>
+          <input type="text" class="form-control" name="horaFim" id="field_horaFim" data-cy="horaFim" formControlName="horaFim" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.agenda.situacaoAgenda" for="field_situacaoAgenda"
+            >Situacao Agenda</label
+          >
+          <select
+            class="form-control"
+            name="situacaoAgenda"
+            formControlName="situacaoAgenda"
+            id="field_situacaoAgenda"
+            data-cy="situacaoAgenda"
+          >
+            <option [ngValue]="null">{{ 'unblockItApp.SituacaoAgenda.null' | translate }}</option>
+            <option value="RESERVADA">{{ 'unblockItApp.SituacaoAgenda.RESERVADA' | translate }}</option>
+            <option value="CONFIRMADA">{{ 'unblockItApp.SituacaoAgenda.CONFIRMADA' | translate }}</option>
+            <option value="REALIZADA">{{ 'unblockItApp.SituacaoAgenda.REALIZADA' | translate }}</option>
+            <option value="CANCELADA_SQUAD">{{ 'unblockItApp.SituacaoAgenda.CANCELADA_SQUAD' | translate }}</option>
+            <option value="CANCELADA_UNBLOC">{{ 'unblockItApp.SituacaoAgenda.CANCELADA_UNBLOC' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.agenda.observacoes" for="field_observacoes">Observacoes</label>
+          <input
+            type="text"
+            class="form-control"
+            name="observacoes"
+            id="field_observacoes"
+            data-cy="observacoes"
+            formControlName="observacoes"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.agenda.pauta" for="field_pauta">Pauta</label>
+          <input type="text" class="form-control" name="pauta" id="field_pauta" data-cy="pauta" formControlName="pauta" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.agenda.destaque" for="field_destaque">Destaque</label>
+          <input type="text" class="form-control" name="destaque" id="field_destaque" data-cy="destaque" formControlName="destaque" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.agenda.impedimento" for="field_impedimento">Impedimento</label>
+          <input
+            type="text"
+            class="form-control"
+            name="impedimento"
+            id="field_impedimento"
+            data-cy="impedimento"
+            formControlName="impedimento"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.agenda.coachAgenda" for="field_coachAgenda">Coach Agenda</label>
+          <select class="form-control" id="field_coachAgenda" data-cy="coachAgenda" name="coachAgenda" formControlName="coachAgenda">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="coachOption.id === editForm.get('coachAgenda')!.value?.id ? editForm.get('coachAgenda')!.value : coachOption"
+              *ngFor="let coachOption of coachesSharedCollection; trackBy: trackCoachById"
+            >
+              {{ coachOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.agenda.squadAgenda" for="field_squadAgenda">Squad Agenda</label>
+          <select class="form-control" id="field_squadAgenda" data-cy="squadAgenda" name="squadAgenda" formControlName="squadAgenda">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="squadOption.id === editForm.get('squadAgenda')!.value?.id ? editForm.get('squadAgenda')!.value : squadOption"
+              *ngFor="let squadOption of squadsSharedCollection; trackBy: trackSquadById"
+            >
+              {{ squadOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

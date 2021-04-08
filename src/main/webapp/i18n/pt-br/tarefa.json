@@ -1,0 +1,31 @@
+{
+  "unblockItApp": {
+    "tarefa": {
+      "home": {
+        "title": "Tarefas",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Tarefa",
+        "createOrEditLabel": "Criar ou editar Tarefa",
+        "notFound": "Nenhum Tarefa encontrado"
+      },
+      "created": "Um novo Tarefa foi criado com o identificador {{ param }}",
+      "updated": "Um Tarefa foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Tarefa foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Tarefa {{ id }}?"
+      },
+      "detail": {
+        "title": "Tarefa"
+      },
+      "id": "ID",
+      "nome": "Nome",
+      "descricao": "Descricao",
+      "dataLimite": "Data Limite",
+      "horaLimite": "Hora Limite",
+      "situacaoTarefa": "Situacao Tarefa",
+      "observacoes": "Observacoes",
+      "coachTarefa": "Coach Tarefa",
+      "squadTarefa": "Squad Tarefa"
+    }
+  }
+}

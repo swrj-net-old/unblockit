@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tarefa">
+      <h2 data-cy="tarefaDetailsHeading"><span jhiTranslate="unblockItApp.tarefa.detail.title">Tarefa</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tarefa.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.tarefa.nome">Nome</span></dt>
+        <dd>
+          <span>{{ tarefa.nome }}</span>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.tarefa.descricao">Descricao</span></dt>
+        <dd>
+          <span>{{ tarefa.descricao }}</span>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.tarefa.dataLimite">Data Limite</span></dt>
+        <dd>
+          <span>{{ tarefa.dataLimite | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.tarefa.horaLimite">Hora Limite</span></dt>
+        <dd>
+          <span>{{ tarefa.horaLimite }}</span>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.tarefa.situacaoTarefa">Situacao Tarefa</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'unblockItApp.SituacaoTarefa.' + tarefa.situacaoTarefa }}">{{ tarefa.situacaoTarefa }}</span>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.tarefa.observacoes">Observacoes</span></dt>
+        <dd>
+          <span>{{ tarefa.observacoes }}</span>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.tarefa.coachTarefa">Coach Tarefa</span></dt>
+        <dd>
+          <div *ngIf="tarefa.coachTarefa">
+            <a [routerLink]="['/coach', tarefa.coachTarefa?.id, 'view']">{{ tarefa.coachTarefa?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.tarefa.squadTarefa">Squad Tarefa</span></dt>
+        <dd>
+          <div *ngIf="tarefa.squadTarefa">
+            <a [routerLink]="['/squad', tarefa.squadTarefa?.id, 'view']">{{ tarefa.squadTarefa?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tarefa', tarefa.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

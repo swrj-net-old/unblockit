@@ -1,0 +1,96 @@
+<div>
+  <h2 id="page-heading" data-cy="AgendaHeading">
+    <span jhiTranslate="unblockItApp.agenda.home.title">Agenda</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="unblockItApp.agenda.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-agenda"
+        [routerLink]="['/agenda/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="unblockItApp.agenda.home.createLabel"> Create a new Agenda </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="agenda?.length === 0">
+    <span jhiTranslate="unblockItApp.agenda.home.notFound">No agenda found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="agenda && agenda.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="unblockItApp.agenda.nome">Nome</span></th>
+          <th scope="col"><span jhiTranslate="unblockItApp.agenda.dataAgenda">Data Agenda</span></th>
+          <th scope="col"><span jhiTranslate="unblockItApp.agenda.horaInicio">Hora Inicio</span></th>
+          <th scope="col"><span jhiTranslate="unblockItApp.agenda.horaFim">Hora Fim</span></th>
+          <th scope="col"><span jhiTranslate="unblockItApp.agenda.situacaoAgenda">Situacao Agenda</span></th>
+          <th scope="col"><span jhiTranslate="unblockItApp.agenda.observacoes">Observacoes</span></th>
+          <th scope="col"><span jhiTranslate="unblockItApp.agenda.pauta">Pauta</span></th>
+          <th scope="col"><span jhiTranslate="unblockItApp.agenda.destaque">Destaque</span></th>
+          <th scope="col"><span jhiTranslate="unblockItApp.agenda.impedimento">Impedimento</span></th>
+          <th scope="col"><span jhiTranslate="unblockItApp.agenda.coachAgenda">Coach Agenda</span></th>
+          <th scope="col"><span jhiTranslate="unblockItApp.agenda.squadAgenda">Squad Agenda</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let agenda of agenda; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/agenda', agenda.id, 'view']">{{ agenda.id }}</a>
+          </td>
+          <td>{{ agenda.nome }}</td>
+          <td>{{ agenda.dataAgenda | formatMediumDate }}</td>
+          <td>{{ agenda.horaInicio }}</td>
+          <td>{{ agenda.horaFim }}</td>
+          <td jhiTranslate="{{ 'unblockItApp.SituacaoAgenda.' + agenda.situacaoAgenda }}">{{ agenda.situacaoAgenda }}</td>
+          <td>{{ agenda.observacoes }}</td>
+          <td>{{ agenda.pauta }}</td>
+          <td>{{ agenda.destaque }}</td>
+          <td>{{ agenda.impedimento }}</td>
+          <td>
+            <div *ngIf="agenda.coachAgenda">
+              <a [routerLink]="['/coach', agenda.coachAgenda?.id, 'view']">{{ agenda.coachAgenda?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="agenda.squadAgenda">
+              <a [routerLink]="['/squad', agenda.squadAgenda?.id, 'view']">{{ agenda.squadAgenda?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/agenda', agenda.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/agenda', agenda.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(agenda)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

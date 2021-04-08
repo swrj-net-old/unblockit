@@ -42,7 +42,9 @@
     "jwtSecretKey": "MWZjODRmODdhOWZjOWQ0ZjkzMTRjOTc3NTIyZjg3MTI0N2NkOWI3NmNhMzkzZGI5MDkzMTgyYmVhYWM0ZDdiNjhkOThhMTBlYTFjOTZlMDEwZWIzOTVhYzM1YjAxNTQwODJhZGY0NWMzMTY2ZjI3MTYyZmI1ZGI1NDQwYTFiNzg=",
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "reactive": false
+    "reactive": false,
+    "entities": ["Coach", "Squad", "Agenda", "Tarefa"],
+    "lastLiquibaseTimestamp": 1617923934000
   },
   "git-provider": "GitHub",
   "git-company": "swrj-net",
