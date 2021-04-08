@@ -1,0 +1,33 @@
+{
+  "name": "Coach",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "agenda",
+      "otherEntityRelationshipName": "coachAgenda",
+      "relationshipName": "agenda"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tarefa",
+      "otherEntityRelationshipName": "coachTarefa",
+      "relationshipName": "tarefa"
+    }
+  ],
+  "entityTableName": "coach",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210408231851"
+}

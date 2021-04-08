@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="agenda">
+      <h2 data-cy="agendaDetailsHeading"><span jhiTranslate="unblockItApp.agenda.detail.title">Agenda</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ agenda.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.agenda.nome">Nome</span></dt>
+        <dd>
+          <span>{{ agenda.nome }}</span>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.agenda.dataAgenda">Data Agenda</span></dt>
+        <dd>
+          <span>{{ agenda.dataAgenda | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.agenda.horaInicio">Hora Inicio</span></dt>
+        <dd>
+          <span>{{ agenda.horaInicio }}</span>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.agenda.horaFim">Hora Fim</span></dt>
+        <dd>
+          <span>{{ agenda.horaFim }}</span>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.agenda.situacaoAgenda">Situacao Agenda</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'unblockItApp.SituacaoAgenda.' + agenda.situacaoAgenda }}">{{ agenda.situacaoAgenda }}</span>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.agenda.observacoes">Observacoes</span></dt>
+        <dd>
+          <span>{{ agenda.observacoes }}</span>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.agenda.pauta">Pauta</span></dt>
+        <dd>
+          <span>{{ agenda.pauta }}</span>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.agenda.destaque">Destaque</span></dt>
+        <dd>
+          <span>{{ agenda.destaque }}</span>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.agenda.impedimento">Impedimento</span></dt>
+        <dd>
+          <span>{{ agenda.impedimento }}</span>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.agenda.coachAgenda">Coach Agenda</span></dt>
+        <dd>
+          <div *ngIf="agenda.coachAgenda">
+            <a [routerLink]="['/coach', agenda.coachAgenda?.id, 'view']">{{ agenda.coachAgenda?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="unblockItApp.agenda.squadAgenda">Squad Agenda</span></dt>
+        <dd>
+          <div *ngIf="agenda.squadAgenda">
+            <a [routerLink]="['/squad', agenda.squadAgenda?.id, 'view']">{{ agenda.squadAgenda?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/agenda', agenda.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

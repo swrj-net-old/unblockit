@@ -48,6 +48,14 @@ public class CacheConfiguration {
             createCache(cm, com.swrj.net.unblockit.domain.User.class.getName());
             createCache(cm, com.swrj.net.unblockit.domain.Authority.class.getName());
             createCache(cm, com.swrj.net.unblockit.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.swrj.net.unblockit.domain.Coach.class.getName());
+            createCache(cm, com.swrj.net.unblockit.domain.Coach.class.getName() + ".agenda");
+            createCache(cm, com.swrj.net.unblockit.domain.Coach.class.getName() + ".tarefas");
+            createCache(cm, com.swrj.net.unblockit.domain.Squad.class.getName());
+            createCache(cm, com.swrj.net.unblockit.domain.Squad.class.getName() + ".agenda");
+            createCache(cm, com.swrj.net.unblockit.domain.Squad.class.getName() + ".tarefas");
+            createCache(cm, com.swrj.net.unblockit.domain.Agenda.class.getName());
+            createCache(cm, com.swrj.net.unblockit.domain.Tarefa.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

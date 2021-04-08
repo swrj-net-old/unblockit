@@ -1,0 +1,33 @@
+{
+  "name": "Squad",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "agenda",
+      "otherEntityRelationshipName": "squadAgenda",
+      "relationshipName": "agenda"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tarefa",
+      "otherEntityRelationshipName": "squadTarefa",
+      "relationshipName": "tarefa"
+    }
+  ],
+  "entityTableName": "squad",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210408231852"
+}

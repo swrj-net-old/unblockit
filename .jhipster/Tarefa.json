@@ -1,0 +1,54 @@
+{
+  "name": "Tarefa",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataLimite",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "horaLimite",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "situacaoTarefa",
+      "fieldType": "SituacaoTarefa",
+      "fieldValues": "PENDENTE,REALIZADA,AGUARDANDO"
+    },
+    {
+      "fieldName": "observacoes",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "coach",
+      "otherEntityRelationshipName": "tarefa",
+      "relationshipName": "coachTarefa"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "squad",
+      "otherEntityRelationshipName": "tarefa",
+      "relationshipName": "squadTarefa"
+    }
+  ],
+  "entityTableName": "tarefa",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210408231854"
+}

@@ -1,0 +1,133 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-tarefa-heading" data-cy="TarefaCreateUpdateHeading" jhiTranslate="unblockItApp.tarefa.home.createOrEditLabel">
+        Create or edit a Tarefa
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.tarefa.nome" for="field_nome">Nome</label>
+          <input type="text" class="form-control" name="nome" id="field_nome" data-cy="nome" formControlName="nome" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.tarefa.descricao" for="field_descricao">Descricao</label>
+          <input type="text" class="form-control" name="descricao" id="field_descricao" data-cy="descricao" formControlName="descricao" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.tarefa.dataLimite" for="field_dataLimite">Data Limite</label>
+          <div class="input-group">
+            <input
+              id="field_dataLimite"
+              data-cy="dataLimite"
+              type="text"
+              class="form-control"
+              name="dataLimite"
+              ngbDatepicker
+              #dataLimiteDp="ngbDatepicker"
+              formControlName="dataLimite"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dataLimiteDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.tarefa.horaLimite" for="field_horaLimite">Hora Limite</label>
+          <input
+            type="text"
+            class="form-control"
+            name="horaLimite"
+            id="field_horaLimite"
+            data-cy="horaLimite"
+            formControlName="horaLimite"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.tarefa.situacaoTarefa" for="field_situacaoTarefa"
+            >Situacao Tarefa</label
+          >
+          <select
+            class="form-control"
+            name="situacaoTarefa"
+            formControlName="situacaoTarefa"
+            id="field_situacaoTarefa"
+            data-cy="situacaoTarefa"
+          >
+            <option [ngValue]="null">{{ 'unblockItApp.SituacaoTarefa.null' | translate }}</option>
+            <option value="PENDENTE">{{ 'unblockItApp.SituacaoTarefa.PENDENTE' | translate }}</option>
+            <option value="REALIZADA">{{ 'unblockItApp.SituacaoTarefa.REALIZADA' | translate }}</option>
+            <option value="AGUARDANDO">{{ 'unblockItApp.SituacaoTarefa.AGUARDANDO' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.tarefa.observacoes" for="field_observacoes">Observacoes</label>
+          <input
+            type="text"
+            class="form-control"
+            name="observacoes"
+            id="field_observacoes"
+            data-cy="observacoes"
+            formControlName="observacoes"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.tarefa.coachTarefa" for="field_coachTarefa">Coach Tarefa</label>
+          <select class="form-control" id="field_coachTarefa" data-cy="coachTarefa" name="coachTarefa" formControlName="coachTarefa">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="coachOption.id === editForm.get('coachTarefa')!.value?.id ? editForm.get('coachTarefa')!.value : coachOption"
+              *ngFor="let coachOption of coachesSharedCollection; trackBy: trackCoachById"
+            >
+              {{ coachOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="unblockItApp.tarefa.squadTarefa" for="field_squadTarefa">Squad Tarefa</label>
+          <select class="form-control" id="field_squadTarefa" data-cy="squadTarefa" name="squadTarefa" formControlName="squadTarefa">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="squadOption.id === editForm.get('squadTarefa')!.value?.id ? editForm.get('squadTarefa')!.value : squadOption"
+              *ngFor="let squadOption of squadsSharedCollection; trackBy: trackSquadById"
+            >
+              {{ squadOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+{
+  "name": "Agenda",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataAgenda",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "horaInicio",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "horaFim",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "situacaoAgenda",
+      "fieldType": "SituacaoAgenda",
+      "fieldValues": "RESERVADA,CONFIRMADA,REALIZADA,CANCELADA_SQUAD,CANCELADA_UNBLOC"
+    },
+    {
+      "fieldName": "observacoes",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pauta",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "destaque",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "impedimento",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "coach",
+      "otherEntityRelationshipName": "agenda",
+      "relationshipName": "coachAgenda"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "squad",
+      "otherEntityRelationshipName": "agenda",
+      "relationshipName": "squadAgenda"
+    }
+  ],
+  "entityTableName": "agenda",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210408231853"
+}
