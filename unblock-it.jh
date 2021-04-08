@@ -1,0 +1,62 @@
+enum SituacaoAgenda {
+  RESERVADA 
+  CONFIRMADA
+  REALIZADA 
+  CANCELADA_SQUAD
+  CANCELADA_UNBLOC
+}
+
+enum SituacaoTarefa {
+  PENDENTE
+  REALIZADA
+  AGUARDANDO
+}
+
+entity Coach {
+  nome String
+}
+
+entity Squad {
+  nome String, 
+}
+
+entity Agenda {
+  nome String
+  dataAgenda LocalDate
+  horaInicio String
+  horaFim String
+  situacaoAgenda SituacaoAgenda
+  observacoes String
+  pauta String
+  destaque String
+  impedimento String
+}
+
+entity Tarefa {
+  nome String
+  descricao String
+  dataLimite LocalDate
+  horaLimite String
+  situacaoTarefa SituacaoTarefa
+  observacoes String
+}
+
+relationship OneToMany {
+  Coach to Agenda{coachAgenda}
+}
+
+relationship OneToMany {
+  Coach to Tarefa{coachTarefa}
+}
+
+relationship OneToMany {
+  Squad to Agenda{squadAgenda}
+}
+
+relationship OneToMany {
+  Squad to Tarefa{squadTarefa}
+}
+
+
+
+
